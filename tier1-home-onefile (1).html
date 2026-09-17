@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tier 1 Tutoring School | Home (One File)</title>
+  <style>
+/* ============================================
+   TIER 1 TUTORING SCHOOL - STYLESHEET
+   A simple example for students learning CSS.
+   ============================================ */
+
+/* ---- Reset-ish basics ---- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+  color: #222831;
+  background-color: #ffffff;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+ul {
+  list-style: none;
+}
+
+/* ---- Color variables (easy for students to re-theme the site) ---- */
+/* EDIT THESE 5 COLORS to re-theme the ENTIRE website at once.
+   Every rule below refers back to these names (var(--navy), var(--gold), etc.)
+   instead of typing a color code over and over -- change it once here,
+   and it updates everywhere on every page. */
+:root {
+  --navy: #0b2545;
+  --blue: #1565c0;
+  --gold: #f2a900;
+  --light-gray: #f4f6f9;
+  --gray-text: #5a6472;
+}
+
+/* ---- Header / Navigation ---- */
+header {
+  background-color: var(--navy);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  height: 42px;
+  width: 42px;
+}
+
+.logo-text {
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.logo-text span {
+  color: var(--gold);
+}
+
+.nav-links {
+  display: flex;
+  gap: 8px;
+}
+
+.nav-links li a {
+  color: #e6ebf2;
+  padding: 10px 14px;
+  border-radius: 4px;
+  font-size: 15px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.nav-links li a:hover,
+.nav-links li a.active {
+  background-color: var(--gold);
+  color: var(--navy);
+  font-weight: 600;
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+}
+
+.menu-toggle span {
+  width: 26px;
+  height: 3px;
+  background-color: #ffffff;
+  border-radius: 2px;
+}
+
+/* ---- Hero section (Home page) ---- */
+.hero {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+  color: #ffffff;
+  padding: 70px 20px;
+}
+
+.hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.hero-text {
+  flex: 1 1 400px;
+}
+
+.hero-text h1 {
+  font-size: 40px;
+  margin-bottom: 16px;
+  line-height: 1.25;
+}
+
+.hero-text h1 span {
+  color: var(--gold);
+}
+
+.hero-text p {
+  font-size: 17px;
+  color: #d7e2f0;
+  margin-bottom: 26px;
+  max-width: 520px;
+}
+
+.hero-image {
+  flex: 1 1 350px;
+  text-align: center;
+}
+
+/* ---- Buttons ---- */
+.btn {
+  display: inline-block;
+  padding: 13px 28px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-primary {
+  background-color: var(--gold);
+  color: var(--navy);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  margin-left: 12px;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+
+/* ---- Generic section layout ---- */
+section {
+  padding: 60px 20px;
+}
+
+.section-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.section-title h2 {
+  font-size: 30px;
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+
+.section-title p {
+  color: var(--gray-text);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.alt-bg {
+  background-color: var(--light-gray);
+}
+
+/* ---- Feature / stat cards ---- */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+}
+
+.feature-card {
+  background-color: #ffffff;
+  border: 1px solid #e6e9ee;
+  border-radius: 10px;
+  padding: 26px 22px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 22px rgba(11, 37, 69, 0.1);
+}
+
+.feature-card img {
+  height: 60px;
+  margin: 0 auto 16px auto;
+}
+
+.feature-card h3 {
+  color: var(--navy);
+  margin-bottom: 8px;
+  font-size: 18px;
+}
+
+.feature-card p {
+  color: var(--gray-text);
+  font-size: 14.5px;
+}
+
+.stats-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 20px;
+  text-align: center;
+}
+
+.stats-bar .stat h3 {
+  font-size: 34px;
+  color: var(--gold);
+}
+
+.stats-bar .stat p {
+  color: #d7e2f0;
+}
+
+/* ---- Course cards ---- */
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 26px;
+}
+
+.course-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #e6e9ee;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.course-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 24px rgba(11, 37, 69, 0.12);
+}
+
+.course-card .course-img {
+  background-color: var(--light-gray);
+  padding: 24px;
+}
+
+.course-card .course-img img {
+  height: 90px;
+  margin: 0 auto;
+}
+
+.course-card .course-body {
+  padding: 20px;
+}
+
+.course-card h3 {
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+
+.course-card p {
+  color: var(--gray-text);
+  font-size: 14.5px;
+  margin-bottom: 14px;
+}
+
+.course-tag {
+  display: inline-block;
+  background-color: var(--light-gray);
+  color: var(--blue);
+  font-size: 12.5px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+/* ---- Team / teacher cards ---- */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 26px;
+}
+
+.team-card {
+  text-align: center;
+  background-color: #ffffff;
+  border: 1px solid #e6e9ee;
+  border-radius: 10px;
+  padding: 26px 20px;
+}
+
+.team-card img {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  margin: 0 auto 16px auto;
+}
+
+.team-card h3 {
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+
+.team-card .role {
+  color: var(--gold);
+  font-size: 13.5px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.team-card p {
+  color: var(--gray-text);
+  font-size: 14px;
+}
+
+/* ---- Articles ---- */
+.articles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 26px;
+}
+
+.article-card {
+  background-color: #ffffff;
+  border: 1px solid #e6e9ee;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.article-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 24px rgba(11, 37, 69, 0.12);
+}
+
+.article-card .article-img {
+  background-color: var(--light-gray);
+  padding: 20px;
+}
+
+.article-card .article-img img {
+  height: 100px;
+  margin: 0 auto;
+}
+
+.article-card .article-body {
+  padding: 20px;
+}
+
+.article-date {
+  font-size: 12.5px;
+  color: var(--blue);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.article-card h3 {
+  color: var(--navy);
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.article-card p {
+  color: var(--gray-text);
+  font-size: 14.5px;
+  margin-bottom: 14px;
+}
+
+.read-more {
+  color: var(--blue);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.read-more:hover {
+  text-decoration: underline;
+}
+
+/* ---- Career page ---- */
+.job-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.job-card {
+  background-color: #ffffff;
+  border: 1px solid #e6e9ee;
+  border-radius: 10px;
+  padding: 22px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.job-card h3 {
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+
+.job-card p {
+  color: var(--gray-text);
+  font-size: 14px;
+}
+
+.job-tag {
+  background-color: var(--light-gray);
+  color: var(--blue);
+  font-size: 12.5px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-weight: 600;
+  margin-right: 8px;
+}
+
+.perks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-top: 10px;
+}
+
+/* ---- Contact page ---- */
+.contact-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+@media (max-width: 800px) {
+  .contact-wrap {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contact-info-card {
+  background-color: var(--navy);
+  color: #ffffff;
+  border-radius: 10px;
+  padding: 30px;
+}
+
+.contact-info-card h3 {
+  margin-bottom: 20px;
+  color: var(--gold);
+}
+
+.contact-info-item {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 20px;
+  align-items: flex-start;
+}
+
+.contact-info-item img {
+  width: 26px;
+  height: 26px;
+  margin-top: 3px;
+}
+
+.contact-info-item strong {
+  display: block;
+  margin-bottom: 3px;
+}
+
+.contact-info-item p,
+.contact-info-item a {
+  color: #d7e2f0;
+  font-size: 14.5px;
+}
+
+.contact-form label {
+  display: block;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 6px;
+  margin-top: 16px;
+  font-size: 14.5px;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid #d3d9e2;
+  border-radius: 6px;
+  font-size: 14.5px;
+  font-family: inherit;
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 110px;
+}
+
+.form-msg {
+  margin-top: 14px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.form-msg.success {
+  color: #1b8a3d;
+}
+
+.form-msg.error {
+  color: #c62828;
+}
+
+/* ---- Footer ---- */
+footer {
+  background-color: var(--navy);
+  color: #d7e2f0;
+  padding: 40px 20px 20px 20px;
+}
+
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  margin-bottom: 24px;
+}
+
+.footer-inner h4 {
+  color: #ffffff;
+  margin-bottom: 14px;
+}
+
+.footer-inner ul li {
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.footer-inner ul li a:hover {
+  color: var(--gold);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-top: 18px;
+  text-align: center;
+  font-size: 13px;
+  color: #9fb0c6;
+}
+
+/* ---- Page header banner (used on inner pages) ---- */
+.page-banner {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+  color: #ffffff;
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.page-banner h1 {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.page-banner p {
+  color: #d7e2f0;
+}
+
+/* ---- Responsive nav ---- */
+@media (max-width: 780px) {
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background-color: var(--navy);
+    flex-direction: column;
+    padding: 10px 20px 20px 20px;
+    display: none;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .hero-text h1 {
+    font-size: 30px;
+  }
+}
+
+</style>
+</head>
+<body>
+
+  <!--
+    ============================================================
+    ONE-FILE VERSION of the Tier 1 home page.
+    Everything is combined into this single file: the CSS is in
+    the <style> block in <head>, the images are embedded directly
+    as long "data:image/svg+xml;base64,..." text inside each
+    src="...", and the JavaScript is in the <script> block at the
+    very bottom, right before </body>. Nothing else to open,
+    nothing else to keep track of -- this file IS the whole page.
+
+    SAFE TO EDIT: any visible text (headings, paragraphs, button
+    labels), the <title> above, and image "alt" descriptions.
+
+    DO NOT rename: id="navLinks" / id="menuToggle" / id="year"
+    below -- the <script> block looks them up by these exact
+    names. Rename one and the mobile menu button or the footer
+    year will silently stop working.
+
+    NOTE: the nav bar and footer still link to about.html,
+    courses.html, etc. Since this file only contains the Home
+    page, clicking those links won't go anywhere useful unless
+    you also have the other pages from the full site in the same
+    folder. That's expected -- this is a one-page, one-file demo
+    of how combining CSS + JS + images into a single HTML file
+    works.
+    ============================================================
+  -->
+
+  <!-- ================= HEADER ================= -->
+  <header>
+    <nav class="navbar">
+      <!-- EDIT: replace "TIER 1" with your business name and swap logo.svg for your own logo -->
+      <a href="index.html" class="logo">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj4KICA8Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0OCIgZmlsbD0iIzBiMjU0NSIvPgogIDxjaXJjbGUgY3g9IjUwIiBjeT0iNTAiIHI9IjQ4IiBmaWxsPSJub25lIiBzdHJva2U9IiNmMmE5MDAiIHN0cm9rZS13aWR0aD0iMyIvPgogIDx0ZXh0IHg9IjUwIiB5PSI2MiIgZm9udC1mYW1pbHk9IlNlZ29lIFVJLCBBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSI0MCIgZm9udC13ZWlnaHQ9IjcwMCIKICAgICAgICB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZmZmZmZmIj5UMTwvdGV4dD4KPC9zdmc+Cg==" alt="Tier 1 logo" />
+        <span class="logo-text">TIER <span>1</span></span>
+      </a>
+
+      <!-- EDIT: change the link text/labels below; keep id="navLinks" as-is (used by script.js) -->
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="articles.html">Articles</a></li>
+        <li><a href="career.html">Career</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- ================= HERO ================= -->
+  <!-- EDIT: this whole section is your main "billboard" -- headline, description, buttons, and the picture on the right -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <h1>Master Math with <span>Tier 1</span> Tutoring School</h1>
+        <p>
+          From primary school to university and adult learners, Tier 1 helps
+          students build real understanding of mathematics &mdash; not just
+          memorised steps &mdash; through UK Math, US Math, IGCSE, A-Level and SAT
+          programmes taught by Mahidol University math graduates.
+        </p>
+        <a href="courses.html" class="btn btn-primary">Explore Courses</a>
+        <a href="contact.html" class="btn btn-outline">Book a Free Trial</a>
+      </div>
+      <div class="hero-image">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NjAgMzYwIj4KICA8IS0tIGNoYWxrYm9hcmQgLS0+CiAgPHJlY3QgeD0iNDAiIHk9IjIwIiB3aWR0aD0iMzgwIiBoZWlnaHQ9IjIzMCIgcng9IjEyIiBmaWxsPSIjMTIzYTYzIi8+CiAgPHJlY3QgeD0iNTgiIHk9IjM4IiB3aWR0aD0iMzQ0IiBoZWlnaHQ9IjE5NCIgcng9IjYiIGZpbGw9IiMwZTJmNTIiLz4KICA8dGV4dCB4PSI4MCIgeT0iOTAiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLCBzZXJpZiIgZm9udC1zaXplPSIzMCIgZmlsbD0iI2YyYTkwMCI+eSA9IG14ICsgYjwvdGV4dD4KICA8dGV4dCB4PSI4MCIgeT0iMTM1IiBmb250LWZhbWlseT0iR2VvcmdpYSwgc2VyaWYiIGZvbnQtc2l6ZT0iMzAiIGZpbGw9IiNmZmZmZmYiPmEmIzE3ODsgKyBiJiMxNzg7ID0gYyYjMTc4OzwvdGV4dD4KICA8dGV4dCB4PSI4MCIgeT0iMTgwIiBmb250LWZhbWlseT0iR2VvcmdpYSwgc2VyaWYiIGZvbnQtc2l6ZT0iMzAiIGZpbGw9IiNmMmE5MDAiPiYjODc0NzsgZih4KSBkeDwvdGV4dD4KICA8bGluZSB4MT0iNzAiIHkxPSIyMDUiIHgyPSIxODAiIHkyPSIyMDUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIyIiBvcGFjaXR5PSIwLjQiLz4KICA8bGluZSB4MT0iMjAwIiB5MT0iMjA1IiB4Mj0iMzMwIiB5Mj0iMjA1IiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIgb3BhY2l0eT0iMC40Ii8+CgogIDwhLS0gZGVzayAtLT4KICA8cmVjdCB4PSIwIiB5PSIyOTAiIHdpZHRoPSI0NjAiIGhlaWdodD0iMjAiIGZpbGw9IiNkN2RjZTMiLz4KICA8cmVjdCB4PSIyMCIgeT0iMjUwIiB3aWR0aD0iNDIwIiBoZWlnaHQ9IjQ1IiByeD0iNiIgZmlsbD0iI2U5ZWRmMiIvPgoKICA8IS0tIHN0dWRlbnQgKHNpbXBsZSBmbGF0IGZpZ3VyZSkgLS0+CiAgPGNpcmNsZSBjeD0iMzMwIiBjeT0iMjE1IiByPSIyNCIgZmlsbD0iI2YwYzI5YSIvPgogIDxwYXRoIGQ9Ik0zMDAgMjUwIHEzMCAtMzAgNjAgMCBsMCA0MCAtNjAgMCB6IiBmaWxsPSIjMTU2NWMwIi8+CiAgPHJlY3QgeD0iMzEwIiB5PSIyNTAiIHdpZHRoPSI0MCIgaGVpZ2h0PSIxOCIgZmlsbD0iI2Y0ZjZmOSIvPgoKICA8IS0tIGJvb2sgLS0+CiAgPHJlY3QgeD0iMzAwIiB5PSIyNjAiIHdpZHRoPSI1NSIgaGVpZ2h0PSIxMCIgcng9IjIiIGZpbGw9IiNmMmE5MDAiLz4KPC9zdmc+Cg==" alt="Illustration of a student studying math in front of a chalkboard" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FEATURES ================= -->
+  <!-- EDIT: swap these 4 cards for your own selling points. Each card = 1 icon + 1 heading + 1 sentence -->
+  <section>
+    <div class="section-inner">
+      <div class="section-title">
+        <h2>Why Families Choose Tier 1</h2>
+        <p>A focused, exam-driven approach to mathematics for every age and every curriculum.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj4KICA8Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0NiIgZmlsbD0iIzE1NjVjMCIgb3BhY2l0eT0iMC4xMiIvPgogIAogIDxjaXJjbGUgY3g9IjUwIiBjeT0iMzgiIHI9IjE0IiBmaWxsPSIjMGIyNTQ1Ii8+CiAgPHBhdGggZD0iTTI1IDc4IHEyNSAtMjggNTAgMCB6IiBmaWxsPSIjMGIyNTQ1Ii8+Cgo8L3N2Zz4K" alt="Teacher icon" />
+          <h3>Math Graduate Teachers</h3>
+          <p>Every tutor is a Mathematics graduate of Mahidol University with classroom teaching experience.</p>
+        </div>
+        <div class="feature-card">
+          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj4KICA8Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0NiIgZmlsbD0iIzE1NjVjMCIgb3BhY2l0eT0iMC4xMiIvPgogIAogIDxyZWN0IHg9IjI4IiB5PSI1NSIgd2lkdGg9IjEyIiBoZWlnaHQ9IjI0IiBmaWxsPSIjZjJhOTAwIi8+CiAgPHJlY3QgeD0iNDQiIHk9IjQyIiB3aWR0aD0iMTIiIGhlaWdodD0iMzciIGZpbGw9IiMxNTY1YzAiLz4KICA8cmVjdCB4PSI2MCIgeT0iMzAiIHdpZHRoPSIxMiIgaGVpZ2h0PSI0OSIgZmlsbD0iIzBiMjU0NSIvPgoKPC9zdmc+Cg==" alt="Levels icon" />
+          <h3>All Levels Covered</h3>
+          <p>From primary and secondary school to college and adult learners returning to study math.</p>
+        </div>
+        <div class="feature-card">
+          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj4KICA8Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0NiIgZmlsbD0iIzE1NjVjMCIgb3BhY2l0eT0iMC4xMiIvPgogIAogIDxwb2x5bGluZSBwb2ludHM9IjI1LDY1IDQyLDQ4IDU1LDU4IDc1LDMyIiBmaWxsPSJub25lIiBzdHJva2U9IiMwYjI1NDUiIHN0cm9rZS13aWR0aD0iNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CiAgPHBvbHlnb24gcG9pbnRzPSI3NSwzMiA3NSw0NSA2Miw0NSIgZmlsbD0iI2YyYTkwMCIvPgoKPC9zdmc+Cg==" alt="Results icon" />
+          <h3>Exam-Focused Results</h3>
+          <p>Curricula mapped directly to UK, US, IGCSE, A-Level and SAT exam boards and past papers.</p>
+        </div>
+        <div class="feature-card">
+          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj4KICA8Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0NiIgZmlsbD0iIzE1NjVjMCIgb3BhY2l0eT0iMC4xMiIvPgogIAogIDxwYXRoIGQ9Ik01MCAyNSBhMjUgMjUgMCAwIDEgMjUgMjUgdjEwIGExMCAxMCAwIDAgMSAtMTAgMTAgaC00IHYtMjAgaDE0IGEyNSAyNSAwIDAgMCAtNTAgMCBoMTQgdjIwIGgtNCBhMTAgMTAgMCAwIDEgLTEwIC0xMCB2LTEwIGEyNSAyNSAwIDAgMSAyNSAtMjUgeiIgZmlsbD0iIzBiMjU0NSIvPgoKPC9zdmc+Cg==" alt="Support icon" />
+          <h3>Small Class Support</h3>
+          <p>Small group and 1-on-1 options so every student gets the attention they need to improve.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= STATS ================= -->
+  <section class="hero">
+    <div class="section-inner stats-bar">
+      <div class="stat">
+        <h3>10+</h3>
+        <p>Years Teaching Math</p>
+      </div>
+      <div class="stat">
+        <h3>5</h3>
+        <p>Exam Programmes</p>
+      </div>
+      <div class="stat">
+        <h3>1,200+</h3>
+        <p>Students Taught</p>
+      </div>
+      <div class="stat">
+        <h3>100%</h3>
+        <p>Mahidol Math Graduate Teachers</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= COURSE PREVIEW ================= -->
+  <!-- EDIT: swap for your own products/services. To add or remove a card, copy or delete one whole <div class="course-card">...</div> block -->
+  <section class="alt-bg">
+    <div class="section-inner">
+      <div class="section-title">
+        <h2>Our Courses</h2>
+        <p>Five focused programmes covering the major international math curricula.</p>
+      </div>
+
+      <div class="courses-grid">
+        <div class="course-card">
+          <div class="course-img"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgMTIwIj4KICA8cmVjdCB4PSI0IiB5PSI0IiB3aWR0aD0iMTEyIiBoZWlnaHQ9IjExMiIgcng9IjE2IiBmaWxsPSIjZjRmNmY5Ii8+CiAgPHJlY3QgeD0iNCIgeT0iNCIgd2lkdGg9IjExMiIgaGVpZ2h0PSIxMTIiIHJ4PSIxNiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMTU2NWMwIiBzdHJva2Utd2lkdGg9IjIiIG9wYWNpdHk9IjAuMjUiLz4KICA8dGV4dCB4PSI2MCIgeT0iNjYiIGZvbnQtZmFtaWx5PSJTZWdvZSBVSSwgQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMzAiIGZvbnQtd2VpZ2h0PSI3MDAiCiAgICAgICAgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzBiMjU0NSI+VUs8L3RleHQ+CiAgPHRleHQgeD0iNjAiIHk9IjkwIiBmb250LWZhbWlseT0iU2Vnb2UgVUksIEFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmb250LXdlaWdodD0iNjAwIgogICAgICAgIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmMmE5MDAiPk1BVEg8L3RleHQ+Cjwvc3ZnPgo=" alt="UK Math icon" /></div>
+          <div class="course-body">
+            <h3>UK Math</h3>
+            <p>Key Stage 2&ndash;4 mathematics following the UK National Curriculum.</p>
+          </div>
+        </div>
+        <div class="course-card">
+          <div class="course-img"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgMTIwIj4KICA8cmVjdCB4PSI0IiB5PSI0IiB3aWR0aD0iMTEyIiBoZWlnaHQ9IjExMiIgcng9IjE2IiBmaWxsPSIjZjRmNmY5Ii8+CiAgPHJlY3QgeD0iNCIgeT0iNCIgd2lkdGg9IjExMiIgaGVpZ2h0PSIxMTIiIHJ4PSIxNiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMTU2NWMwIiBzdHJva2Utd2lkdGg9IjIiIG9wYWNpdHk9IjAuMjUiLz4KICA8dGV4dCB4PSI2MCIgeT0iNjYiIGZvbnQtZmFtaWx5PSJTZWdvZSBVSSwgQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMzAiIGZvbnQtd2VpZ2h0PSI3MDAiCiAgICAgICAgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzBiMjU0NSI+VVM8L3RleHQ+CiAgPHRleHQgeD0iNjAiIHk9IjkwIiBmb250LWZhbWlseT0iU2Vnb2UgVUksIEFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmb250LXdlaWdodD0iNjAwIgogICAgICAgIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmMmE5MDAiPk1BVEg8L3RleHQ+Cjwvc3ZnPgo=" alt="US Math icon" /></div>
+          <div class="course-body">
+            <h3>US Math</h3>
+            <p>Grade-level math aligned to US Common Core standards.</p>
+          </div>
+        </div>
+        <div class="course-card">
+          <div class="course-img"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgMTIwIj4KICA8cmVjdCB4PSI0IiB5PSI0IiB3aWR0aD0iMTEyIiBoZWlnaHQ9IjExMiIgcng9IjE2IiBmaWxsPSIjZjRmNmY5Ii8+CiAgPHJlY3QgeD0iNCIgeT0iNCIgd2lkdGg9IjExMiIgaGVpZ2h0PSIxMTIiIHJ4PSIxNiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMTU2NWMwIiBzdHJva2Utd2lkdGg9IjIiIG9wYWNpdHk9IjAuMjUiLz4KICA8dGV4dCB4PSI2MCIgeT0iNjYiIGZvbnQtZmFtaWx5PSJTZWdvZSBVSSwgQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMzAiIGZvbnQtd2VpZ2h0PSI3MDAiCiAgICAgICAgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzBiMjU0NSI+SUc8L3RleHQ+CiAgPHRleHQgeD0iNjAiIHk9IjkwIiBmb250LWZhbWlseT0iU2Vnb2UgVUksIEFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmb250LXdlaWdodD0iNjAwIgogICAgICAgIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmMmE5MDAiPkNTRTwvdGV4dD4KPC9zdmc+Cg==" alt="IGCSE icon" /></div>
+          <div class="course-body">
+            <h3>IGCSE</h3>
+            <p>Cambridge &amp; Edexcel IGCSE Math (Core &amp; Extended).</p>
+          </div>
+        </div>
+        <div class="course-card">
+          <div class="course-img"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgMTIwIj4KICA8cmVjdCB4PSI0IiB5PSI0IiB3aWR0aD0iMTEyIiBoZWlnaHQ9IjExMiIgcng9IjE2IiBmaWxsPSIjZjRmNmY5Ii8+CiAgPHJlY3QgeD0iNCIgeT0iNCIgd2lkdGg9IjExMiIgaGVpZ2h0PSIxMTIiIHJ4PSIxNiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMTU2NWMwIiBzdHJva2Utd2lkdGg9IjIiIG9wYWNpdHk9IjAuMjUiLz4KICA8dGV4dCB4PSI2MCIgeT0iNjYiIGZvbnQtZmFtaWx5PSJTZWdvZSBVSSwgQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMzAiIGZvbnQtd2VpZ2h0PSI3MDAiCiAgICAgICAgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzBiMjU0NSI+QTwvdGV4dD4KICA8dGV4dCB4PSI2MCIgeT0iOTAiIGZvbnQtZmFtaWx5PSJTZWdvZSBVSSwgQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZvbnQtd2VpZ2h0PSI2MDAiCiAgICAgICAgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2YyYTkwMCI+TEVWRUw8L3RleHQ+Cjwvc3ZnPgo=" alt="A-Level icon" /></div>
+          <div class="course-body">
+            <h3>A-Level</h3>
+            <p>Pure Math, Statistics &amp; Mechanics for AS and A2.</p>
+          </div>
+        </div>
+        <div class="course-card">
+          <div class="course-img"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgMTIwIj4KICA8cmVjdCB4PSI0IiB5PSI0IiB3aWR0aD0iMTEyIiBoZWlnaHQ9IjExMiIgcng9IjE2IiBmaWxsPSIjZjRmNmY5Ii8+CiAgPHJlY3QgeD0iNCIgeT0iNCIgd2lkdGg9IjExMiIgaGVpZ2h0PSIxMTIiIHJ4PSIxNiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMTU2NWMwIiBzdHJva2Utd2lkdGg9IjIiIG9wYWNpdHk9IjAuMjUiLz4KICA8dGV4dCB4PSI2MCIgeT0iNjYiIGZvbnQtZmFtaWx5PSJTZWdvZSBVSSwgQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMzAiIGZvbnQtd2VpZ2h0PSI3MDAiCiAgICAgICAgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzBiMjU0NSI+U0FUPC90ZXh0PgogIDx0ZXh0IHg9IjYwIiB5PSI5MCIgZm9udC1mYW1pbHk9IlNlZ29lIFVJLCBBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiIgZm9udC13ZWlnaHQ9IjYwMCIKICAgICAgICB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZjJhOTAwIj5NQVRIPC90ZXh0Pgo8L3N2Zz4K" alt="SAT icon" /></div>
+          <div class="course-body">
+            <h3>SAT</h3>
+            <p>SAT Math prep with timed practice and score strategy.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align:center; margin-top: 36px;">
+        <a href="courses.html" class="btn btn-primary" style="background-color: var(--navy); color:#fff;">See All Course Details</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <!-- EDIT: same footer is repeated on every page -- if you change it here, copy the same change into the other 5 HTML files -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <h4>Tier 1 Tutoring School</h4>
+        <p>Helping students of all ages master mathematics, from primary school through university and beyond.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="courses.html">Courses</a></li>
+          <li><a href="articles.html">Articles</a></li>
+          <li><a href="career.html">Career</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>Phone: 089-123-4567</li>
+          <li>Email: info@tier1.com</li>
+        </ul>
+      </div>
+    </div>
+    <!-- EDIT the text below, but keep id="year" -- script.js fills it in automatically -->
+    <div class="footer-bottom">
+      &copy; <span id="year"></span> Tier 1 Tutoring School. This is an example website built for a web design class.
+    </div>
+  </footer>
+
+  <script>
+/* ============================================
+   TIER 1 TUTORING SCHOOL - SCRIPT.JS
+   A simple example for students learning JavaScript.
+   Three small features:
+     1. Mobile menu toggle
+     2. Auto-updating footer year
+     3. Contact form validation (contact.html only)
+
+   STUDENT NOTE: This file finds elements on the page using
+   document.getElementById("..."). Those id names (menuToggle,
+   navLinks, year, contactForm, name, email, message, formMsg)
+   MUST match the id="..." attributes in the HTML files exactly,
+   or the matching feature will silently stop working (no error
+   message -- it will just do nothing). If you rename an id in
+   the HTML, update the matching line below too.
+
+   Feel free to add your own new feature underneath the existing
+   three -- e.g. an FAQ accordion, an image slider, or a "back to
+   top" button are good starter ideas.
+   ============================================ */
+
+// 1. Mobile menu toggle -----------------------------------------
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+
+if (menuToggle && navLinks) {
+  menuToggle.addEventListener("click", function () {
+    navLinks.classList.toggle("show");
+  });
+}
+
+// 2. Auto-updating footer year -----------------------------------
+const yearSpan = document.getElementById("year");
+if (yearSpan) {
+  const currentYear = new Date().getFullYear();
+  yearSpan.textContent = currentYear;
+}
+
+// 3. Contact form validation --------------------------------------
+const contactForm = document.getElementById("contactForm");
+const formMsg = document.getElementById("formMsg");
+
+if (contactForm) {
+  contactForm.addEventListener("submit", function (event) {
+    // Stop the form from actually submitting/reloading the page,
+    // since this is just a front-end example with no server.
+    event.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = document.getElementById("message").value.trim();
+
+    // Very simple email check for teaching purposes
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (name === "" || email === "" || message === "") {
+      showMessage("Please fill in every field before sending.", "error");
+      return;
+    }
+
+    if (!emailPattern.test(email)) {
+      showMessage("Please enter a valid email address.", "error");
+      return;
+    }
+
+    // If everything looks good:
+    showMessage(
+      "Thank you, " + name + "! Your message has been received. We will reply to " + email + " soon.",
+      "success"
+    );
+    contactForm.reset();
+  });
+}
+
+function showMessage(text, type) {
+  formMsg.textContent = text;
+  formMsg.className = "form-msg " + type;
+}
+
+</script>
+</body>
+</html>
